@@ -6,3 +6,6 @@ mlplatform/.cache
 mlplatform/aws_config
 mlplatform/kustomize
 mlplatform/kfctl_aws_cognito.v1.1.0.yaml
+
+# Docs
+TODO.md
