@@ -28,8 +28,9 @@ aws cloudformation create-stack \
     --capabilities CAPABILITY_IAM \
     --parameters ParameterKey=UserPoolName,ParameterValue=mlplatform \
     --region eu-west-1
-
 ```
+
+This will provision the Cognito user pool that will be used to authenticate Kubeflow users.
 
 ## Resource Cleanup
 At this time I have found the easiest way to delete Kubeflow and the EKS cluster is by deleting the CloudFormation stacks in the AWS Console.
