@@ -20,19 +20,19 @@ eksctl create cluster -f eks_cluster.yaml
 ```
 
 ## Cognito User Pool Creation
-The Cognito User Pool can be created via the `cognito.yaml` CloudFormation template by running the following AWS CLI command:
+The Cognito user pool can be created via the `cognito.yaml` CloudFormation template by running the following AWS CLI command:
 ```
 aws cloudformation create-stack \
---stack-name "mlplatform-cognito-stack" \
---template-body file://cognito.yaml \
---capabilities CAPABILITY_IAM \
---parameters ParameterKey=UserPoolName,ParameterValue=mlplatform \
---region eu-west-1
+    --stack-name "mlplatform-cognito-stack" \
+    --template-body file://cognito.yaml \
+    --capabilities CAPABILITY_IAM \
+    --parameters ParameterKey=UserPoolName,ParameterValue=mlplatform \
+    --region eu-west-1
 ```
 
 This will provision the Cognito user pool that will be used to authenticate Kubeflow users.
 
-## Resource Cleanup
+## Resource Cleanup
 At this time I have found the easiest way to delete Kubeflow and the EKS cluster is by deleting the CloudFormation stacks in the AWS Console.
 
 The node instance role may need to be deleted in a separate action. Any EBS volumes that have been created should also be deleted.
