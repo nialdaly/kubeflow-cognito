@@ -23,6 +23,11 @@ The EKS cluster can then be created by running:
 eksctl create cluster -f eks_cluster.yaml 
 ```
 
+Once the cluster has been created run the following command as a test to check that the desired nodes are ready.
+```
+kubectl get nodes
+```
+
 ## 2. Cognito User Pool Creation
 The Cognito user pool can be created via the `cognito.yaml` CloudFormation template by running the following AWS CLI command:
 ```
