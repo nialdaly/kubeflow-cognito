@@ -6,8 +6,6 @@ Parameters:
     Default: "mlplatform"
 
 Resources:
-  # Creates a user pool in cognito for your app to auth against
-  # Other fields can be added to the schema
   UserPool:
     Type: "AWS::Cognito::UserPool"
     Properties:
@@ -23,7 +21,6 @@ Resources:
           Mutable: false
           Required: true
   
-  # Creates a User Pool Client to be used by the identity pool
   UserPoolClient:
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
@@ -40,17 +37,15 @@ Resources:
       CallbackURLs:
         - http://localhost
   
-  # Creates a federeated Identity pool
   IdentityPool:
     Type: "AWS::Cognito::IdentityPool"
     Properties:
-      IdentityPoolName: !Sub ${AuthName}Identity
+      IdentityPoolName: !Sub ${UserPoolName}Identity
       AllowUnauthenticatedIdentities: true
       CognitoIdentityProviders: 
         - ClientId: !Ref UserPoolClient
           ProviderName: !GetAtt UserPool.ProviderName
 
-  # Create a role for unauthorized acces to AWS resources. Very limited access. Only allows users in the previously created Identity Pool
   CognitoUnAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -77,3 +72,17 @@ Resources:
                   - "mobileanalytics:PutEvents"
                   - "cognito-sync:*"
                 Resource: "*"
+
+Outputs:
+  UserPoolId:
+    Value: !Ref UserPool
+    Export:
+      Name: "UserPool::Id"
+  UserPoolClientId:
+    Value: !Ref UserPoolClient
+    Export:
+      Name: "UserPoolClient::Id"
+  IdentityPoolId:
+    Value: !Ref IdentityPool
+    Export:
+      Name: "IdentityPool::Id"
