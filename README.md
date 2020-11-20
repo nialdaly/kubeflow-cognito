@@ -23,11 +23,11 @@ eksctl create cluster -f eks_cluster.yaml
 The Cognito User Pool can be created via the `cognito.yaml` CloudFormation template by running the following AWS CLI command:
 ```
 aws cloudformation create-stack \
-    --stack-name "mlplatform-cognito-stack" \
-    --template-body file://cognito.yaml \
-    --capabilities CAPABILITY_IAM \
-    --parameters ParameterKey=UserPoolName,ParameterValue=mlplatform \
-    --region eu-west-1
+--stack-name "mlplatform-cognito-stack" \
+--template-body file://cognito.yaml \
+--capabilities CAPABILITY_IAM \
+--parameters ParameterKey=UserPoolName,ParameterValue=mlplatform \
+--region eu-west-1
 ```
 
 This will provision the Cognito user pool that will be used to authenticate Kubeflow users.
