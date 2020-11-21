@@ -58,7 +58,7 @@ export AWS_CLUSTER_NODE_ROLE=$(aws iam list-roles \
                 .RoleName")
 
 # Adds the environment variables and dynamically generates the kubeflow manifest file
-cat << EOF > kfctl_aws_cognito.v1.1.0.yaml
+cat << EOF > kubeflow_manifest.yaml
 apiVersion: kfdef.apps.kubeflow.org/v1
 kind: KfDef
 metadata:
@@ -176,5 +176,5 @@ spec:
 EOF
 
 # Builds and creates Kubeflow on the EKS cluster
-# kfctl build -f kfctl_aws_cognito.v1.1.0.yaml -V
-# kfctl apply -f kfctl_aws_cognito.v1.1.0.yaml -V
+# kfctl build -f kubeflow_manifest.yaml -V
+# kfctl apply -f kubeflow_manifest.yaml -V
