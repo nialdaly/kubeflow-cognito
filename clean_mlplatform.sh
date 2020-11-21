@@ -1,6 +1,7 @@
 #!/bin/sh
 
+# Removes generated artifacts from the sh deploy_kubeflow.sh command
 rm -rf mlplatform/.cache
 rm -rf mlplatform/aws_config
 rm -rf mlplatform/kustomize
-rm -rf mlplatform/kfctl_aws_cognito.v1.1.0.yaml
+rm -rf mlplatform/kubeflow_manifest.yaml
