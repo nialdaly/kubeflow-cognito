@@ -9,4 +9,4 @@ metadata:
 nodeGroups:
   - name: ng
     desiredCapacity: 4
-    instanceType: m5.xlarge
+    instanceType: m5.large
